@@ -1,0 +1,15 @@
+server:
+  database: mysql2://root:cyclid@cyclid-db/cyclid
+  log: /var/log/cyclid/cyclid.log
+  dispatcher: local
+  builder: google
+manage:
+  api:
+    server: http://cyclid-server:8361
+    client: http://192.168.99.102:8361
+plugins:
+  google:
+    project: cyclid
+    client_email: 123456789099-compute@developer.gserviceaccount.com
+    json_key_location: /var/lib/google/gcp.json
+    zone: europe-west1-b

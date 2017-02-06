@@ -1,0 +1,32 @@
+version: '2'
+services:
+  cyclid-server:
+    build: .
+    ports:
+      - "8361:8361"
+    environment:
+      - REDIS_URL=redis://cyclid-redis:6379
+    depends_on:
+      - cyclid-db
+      - cyclid-sidekiq
+      - cyclid-redis
+  cyclid-ui:
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - REDIS_URL=redis://cyclid-redis:6379
+      - CYCLID_UI=true
+    depends_on:
+      - cyclid-server
+  cyclid-sidekiq:
+    build: .
+    environment:
+      - REDIS_URL=redis://cyclid-redis:6379
+    entrypoint: sidekiq -e production -L /var/log/sidekiq.log -r /var/lib/cyclid/sidekiq.rb
+  cyclid-db:
+    image: "mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=cyclid
+  cyclid-redis:
+    image: "redis"
