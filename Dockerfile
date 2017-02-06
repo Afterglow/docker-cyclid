@@ -21,6 +21,7 @@ COPY files/config-ui.ru /var/lib/cyclid-ui/config.ru
 COPY files/unicorn-server.rb /var/lib/cyclid/unicorn.rb
 COPY files/unicorn-ui.rb /var/lib/cyclid-ui/unicorn.rb
 COPY files/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY files/wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /entrypoint.sh /wait-for-it.sh
 
-ENTRYPOINT /entrypoint.sh
+CMD /entrypoint.sh

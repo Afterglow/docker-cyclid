@@ -6,6 +6,7 @@ services:
       - "8361:8361"
     environment:
       - REDIS_URL=redis://cyclid-redis:6379
+    command: ["/wait-for-it.sh", "cyclid-db:3306", "--", "/entrypoint.sh"]
     depends_on:
       - cyclid-db
       - cyclid-sidekiq
@@ -17,6 +18,7 @@ services:
     environment:
       - REDIS_URL=redis://cyclid-redis:6379
       - CYCLID_UI=true
+    command: ["/wait-for-it.sh", "cyclid-db:3306", "--", "/entrypoint.sh"]
     depends_on:
       - cyclid-server
   cyclid-sidekiq:
