@@ -4,7 +4,7 @@ RUN apt-get update
 RUN apt-get install -qy software-properties-common
 RUN add-apt-repository ppa:brightbox/ruby-ng
 RUN apt-get update
-RUN apt-get install -qy ruby2.3 ruby2.3-dev build-essential cmake mysql-client libmysqlclient-dev libsasl2-dev
+RUN apt-get install -qy ruby2.3 ruby2.3-dev build-essential cmake mysql-client libmysqlclient-dev libsasl2-dev nginx
 RUN mkdir -p /var/lib/cyclid /var/run/cyclid /etc/cyclid /var/log/cyclid /var/lib/cyclid-ui
 COPY files/cyclid-0.2.4.gem /tmp/
 
@@ -20,6 +20,7 @@ COPY files/config-server.ru /var/lib/cyclid/config.ru
 COPY files/config-ui.ru /var/lib/cyclid-ui/config.ru
 COPY files/unicorn-server.rb /var/lib/cyclid/unicorn.rb
 COPY files/unicorn-ui.rb /var/lib/cyclid-ui/unicorn.rb
+COPY files/nginx /etc/nginx/sites-available/cyclid-ui
 COPY files/entrypoint.sh /entrypoint.sh
 COPY files/wait-for-it.sh /wait-for-it.sh
 RUN chmod +x /entrypoint.sh /wait-for-it.sh

@@ -3,10 +3,6 @@ server:
   log: /var/log/cyclid/cyclid.log
   dispatcher: local
   builder: google
-manage:
-  api:
-    server: http://cyclid-server:8361
-    client: http://192.168.99.102:8361
 plugins:
   google:
     project: cyclid
