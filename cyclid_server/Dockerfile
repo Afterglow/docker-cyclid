@@ -18,6 +18,5 @@ COPY files/config.ru /var/lib/cyclid/config.ru
 COPY files/unicorn.rb /var/lib/cyclid/unicorn.rb
 COPY files/entrypoint.sh /entrypoint.sh
 COPY files/wait-for-it.sh /wait-for-it.sh
-#RUN chmod +x /entrypoint.sh /wait-for-it.sh
 
 CMD /entrypoint.sh
