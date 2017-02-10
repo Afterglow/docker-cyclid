@@ -6,9 +6,8 @@ RUN add-apt-repository ppa:brightbox/ruby-ng
 RUN apt-get update
 RUN apt-get install -qy ruby2.3 ruby2.3-dev build-essential cmake mysql-client libmysqlclient-dev libsasl2-dev
 RUN mkdir -p /var/run/cyclid /etc/cyclid /var/log/cyclid /var/lib/cyclid-ui
-COPY files/cyclid-ui-0.2.2.gem /tmp/
 
-RUN gem install /tmp/cyclid-ui-0.2.2.gem
+RUN gem install cyclid-ui
 RUN gem install unicorn
 RUN ln -s $(cyclid-ui-assets) /var/lib/cyclid-ui/public
 
