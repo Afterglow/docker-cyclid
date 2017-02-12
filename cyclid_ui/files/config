@@ -1,0 +1,5 @@
+manage:
+  log: /var/log/cyclid/cyclid-ui.log
+  api:
+    server: http://cyclid-server:8361
+    client: http://localhost:8361
