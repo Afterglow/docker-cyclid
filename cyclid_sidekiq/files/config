@@ -2,10 +2,4 @@ server:
   database: mysql2://root:cyclid@cyclid-db/cyclid
   log: /var/log/cyclid/cyclid.log
   dispatcher: local
-  builder: google
-plugins:
-  google:
-    project: cyclid
-    client_email: 123456789099-compute@developer.gserviceaccount.com
-    json_key_location: /var/lib/google/gcp.json
-    zone: europe-west1-b
+  builder: docker
